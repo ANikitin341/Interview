@@ -16,3 +16,13 @@ const arr = [
   "header",
 ];
 
+const array = [1, 2, 3, 4, 5];
+const res = array.reduce(
+  (akk, el) => {
+    akk.b = 3;
+    return {  curent: akk.curent + el, ...akk};
+  },
+  { curent: 0, b: 3 }
+);
+
+console.log("---res", res);
