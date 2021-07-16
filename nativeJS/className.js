@@ -1,28 +1,43 @@
-// написать функцию которая принимает массив строк
-// и сортирует его по колличеству одинаковых элементов (какая строка чаще встречается будет выше)
-// например arr вернет ["header", "item", "b" , "menu-item", "icon" ]
+/*
+    название: сортировка по колличеству элементов
+    
+    описание:
+      написать функцию которая принимает массив строк
+      и сортирует его по колличеству одинаковых элементов (какая строка чаще встречается будет выше)
+      например arr вернет ["header", "item", "b" , "menu-item", "icon" ]
 
-const arr = [
-  "item",
-  "item",
-  "item",
-  "b",
-  "b",
-  "header",
-  "header",
-  "header",
-  "menu-item",
-  "icon",
-  "header",
-];
+    теги: [массивы]
+    
+    сложность: 4 мин
+    
+    уровень автора: 2
+    
+    тесты:
+      const arr = [
+        "item",
+        "item",
+        "item",
+        "b",
+        "b",
+        "header",
+        "header",
+        "header",
+        "menu-item",
+        "icon",
+        "header",
+      ];
 
-const array = [1, 2, 3, 4, 5];
-const res = array.reduce(
-  (akk, el) => {
-    akk.b = 3;
-    return {  curent: akk.curent + el, ...akk};
-  },
-  { curent: 0, b: 3 }
-);
+      fn(arr) //[ 'header', 'item', 'b', 'menu-item', 'icon' ]
+        
 
-console.log("---res", res);
+    решение:
+      const fn = (arr) => {
+        const obj = arr.reduce((s, el) => {
+          s[el] = (s[el] || 1) + 1;
+          return s;
+        }, {});
+        return Object.entries(obj)
+        .sort((a, b) => b[1] - a[1])
+        .map((el) => el[0]);
+      };
+*/
