@@ -1,4 +1,3 @@
-
 /*
     
     название: проверка числа на вхождение в последовательность фибоначи
@@ -22,20 +21,17 @@
         checkNumInFibonachi(5) //true
         checkNumInFibonachi(6) //false
         checkNumInFibonachi(7) //false
+        checkNumInFibonachi(1597) //true
+        checkNumInFibonachi(1500) //false
 
-    решение:
         const checkNumInFibonachi = (n) => {
-        let prev = 1;
-        let last = 1;
-        
-        while (last < n) {
-        const b = last;
-        last = b + prev;
-        prev = b;
+        let a = 1;
+        let b = 1;
+
+        while (n > b) {
+            [a, b] = [b, a + b];
         }
-        return n === prev || last === n;
+
+        return n === b;
         };
 */
-
-
-
