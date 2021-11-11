@@ -38,20 +38,20 @@ const output = [
 
 const f = (students) => {
   const { id, ...titles } = students[0];
-  const res = Object.keys(titles).map((t) =>
+  const res = Object.keys(titles).map((title) =>
     students.reduce(
-      (acc, student) => ({ ...acc, [`student${student.id}`]: student[t] }),
-      { title: t }
+      (acc, student) => {
+        acc[`student${student.id}`] = student[title];
+        if (title === "cash") {
+          acc.sum = (acc.sum || 0) + student[title];
+        }
+        return acc;
+      },
+      { title }
     )
   );
 
-  const findIndexCash = res.findIndex((el) => el.title === "cash");
-  if (findIndexCash + 1) {
-    const { title, ...cash } = res[findIndexCash];
-    res[findIndexCash] = {
-      ...res[findIndexCash],
-      sum: Object.values(cash).reduce((a, el) => a + el, 0),
-    };
-  }
   return res;
 };
+
+console.log("---f(students)", f(students));
