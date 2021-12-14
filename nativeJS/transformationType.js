@@ -2,37 +2,43 @@
 // объект cash должен содержать ключ sum  и значениием суммой всех cash студентов
 const students = [
   {
-    id: 0,
+    id: 1,
     name: "A",
     age: 22,
     cash: 55000,
-    iselder: true,
-  },
-  {
-    id: 1,
-    name: "B",
-    age: 19,
-    cash: 15000,
-    iselder: false,
+    isElder: true,
   },
   {
     id: 2,
     name: "B",
+    age: 19,
+    cash: 15000,
+    isElder: false,
+  },
+  {
+    id: 4,
+    name: "B",
     age: 46,
     cash: 40000,
-    iselder: false,
+    isElder: false,
   },
 ];
 
 const output = [
-  { title: "name", student0: "A", student1: "B", student2: "C" },
-  { title: "age", student0: 22, student1: 19, student2: 46 },
+  { title: "name", student1: "A", student2: "B", student4: "B" },
+  { title: "age", student1: 22, student2: 19, student4: 46 },
   {
     title: "cash",
-    student0: 55000,
-    student1: 15000,
-    student2: 40000,
+    student1: 55000,
     sum: 110000,
+    student2: 15000,
+    student4: 40000,
+  },
+  {
+    title: "isElder",
+    student1: true,
+    student2: false,
+    student4: false,
   },
 ];
 
