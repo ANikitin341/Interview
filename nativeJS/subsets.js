@@ -5,7 +5,7 @@ const nums = [1, 2, 3, 4];
 
 const subsets = (nums) =>
   nums.reduce(
-    (subsets, value) => subsets.concat(subsets.map((set) => [value, ...set])),
+    (subsets, value) => ([...subsets, ...subsets.map((set) => [value, ...set])]),
     [[]]
   );
 
