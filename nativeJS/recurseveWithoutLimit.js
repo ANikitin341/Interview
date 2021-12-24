@@ -1,9 +1,3 @@
-function delay(timeout) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, timeout);
-  });
-}
-
 const recurseveWithoutLimitMemory = async (count) => {
   if (count == 0) {
     return count;
@@ -12,12 +6,13 @@ const recurseveWithoutLimitMemory = async (count) => {
     console.log(count);
   }
 
-  await delay(1);
-  const c = (await recurseveWithoutLimitMemory(count - 1)) + count;
-  return c;
+  await new Promise(function (resolve) {
+    resolve();
+  });
+  return (await recurseveWithoutLimitMemory(count - 1)) + count;
 };
 
-recurseveWithoutLimitMemory(10).then(function (res) {
+recurseveWithoutLimitMemory(1000000).then((res) => {
   console.log("---recurseveWithoutLimitMemory", res);
 });
 
