@@ -1,18 +1,36 @@
-// что выведет в консоль?
-// как это исправить
+/*
+    название: замыкание
+    
+    описание: 
+      что выведет в консоль?
+        
+    теги: [замыкание, функции]
+    
+    сложность: 5 мин
+    
+    уровень автора: 2
+    
+    тесты:
+      function makeCounter() {
+    
+        let count = 1;
+        return function () {
+          return count++;
+        };
+      }
 
-function makeCounter() {
-  let count = 1;
+      const counter = makeCounter();
+      const counter2 = makeCounter();
 
-  return function () {
-    return count++;
-  };
-}
+      console.log("1---", counter());
+      console.log("2---", counter());
+      console.log("3---", counter2());
+      console.log("4---", counter2());
 
-const counter = makeCounter();
-const counter2 = makeCounter();
-
-console.log("---", counter());
-console.log("---", counter());
-console.log("---", counter2());
-console.log("---", counter2());
+    решение:
+      1--- 1
+      2--- 2
+      3--- 1
+      4--- 2
+        
+*/

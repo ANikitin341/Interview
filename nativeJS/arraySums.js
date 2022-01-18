@@ -1,23 +1,48 @@
-const input = [-1, 0, 1, 2, -1, -4];
-const quantity = 3;
-const sum = 0;
-const output = [
-  [-1, -1, 2],
-  [-1, 0, 1],
-];
+/*
+    название: сумма в массиве
+    
+    описание: написать функцию которая на вход прнимает три параметра. 
+      1-массив числел, 2-коллиичество чисел в результируещем массииве, 3-сумма чиисел в результируещем ммассиве
+      на выходе должен получится массив с массивами где сумма чисел равнна 1му параметру и колличество элементов равна 2му парметру
+      
+    теги: [числа, массивы, функции]
+    
+    сложность: 30 мин
+    
+    уровень автора: 2
+    
+    тесты:
+      const input = [-1, 0, 1, 2, -1, -4];
+      const quantity = 3;
+      const sum = 0;
+      const output = [
+        [-1, -1, 2],
+        [-1, 0, 1],
+      ];
 
-const fn = (arr, sum, quantity) => {
-  const c = arr.reduce(
-    (subsets, value) => [...subsets, ...subsets.map((set) => [value, ...set])],
-    [[]]
-  );
+      ///////////////////////////////////////////////
 
-  const b = c.filter((el) =>
-    el.length === quantity && el.reduce((s, n) => s + n) === sum ? true : false
-  );
+      const input1 = [16, 48, 54, 3, 2, 1, 6, 36, 0];
+      const quantity1 = 2;
+      const sum1 = 54;
+      const output1 = [
+        [48, 6],
+        [0, 54],
+      ];
 
-  return [...new Set(b.map((el) => JSON.stringify(el.sort())))].map((el) =>
-    JSON.parse(el)
-  );
-};
-console.log("---fn()", fn(input, sum, quantity));
+    решение:
+      const fn = (arr, sum, quantity) => {
+        const c = arr.reduce(
+          (subsets, value) => [...subsets, ...subsets.map((set) => [value, ...set])],
+          [[]]
+        );
+
+        const b = c.filter((el) =>
+          el.length === quantity && el.reduce((s, n) => s + n) === sum
+        );
+
+        return [...new Set(b.map((el) => JSON.stringify(el.sort())))].map((el) =>
+          JSON.parse(el)
+        );
+      };
+*/

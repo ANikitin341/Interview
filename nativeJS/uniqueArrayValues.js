@@ -1,22 +1,66 @@
-//написать функцию оторая принимает массив и возвращаем массив уникальных значений
-const arr = [2, 3, 9, 1, 2, 3, 4, 4, 5, 5, 7, 7, 7, 8, 9];
+/*
+    название: массив уникальных значений
+    
+    описание: написать функцию оторая принимает массив и возвращаем массив уникальных значений с разнами типами данных 
+    
+    теги: [числа, функции]
+    
+    сложность: 10 мин
+    
+    уровень автора: 2
+    
+    тесты:
+        const arr = [
+        2,
+        2,
+        2,
+        3,
+        4,
+        2,
+        2,
+        {},
+        {},
+        [1],
+        [1],
+        [2],
+        "1",
+        "1",
+        true,
+        true,
+        () => {
+            console.log("---1", 1);
+        },
+        () => {
+            console.log("---1", 1);
+        },
+        ];
 
-const res = [2, 3, 9, 1, 4, 5, 7, 8];
+        const res = [
+        2,
+        3,
+        4,
+        {},
+        [1],
+        [2],
+        "1",
+        true,
+        () => {
+            console.log("---1", 1);
+        },
+        ]; 
 
-// const uniqFunction = (arr) => {
-//     let result = [];
-//     let count = 0;
-
-//     for (let i = 0; i < arr.length; i++) {
-//         const element = arr[i];
-//         for(let j = 0; j < arr.length; j++) {
-//             const item = arr[j];
-//             if(element === item) {
-//                 count++;
-//             }
-//         }
-
-//     }
-// }
-
-// consol.log(uniqFunction(arr));
+    решение:
+        const uniqFunction = (arr) =>
+            arr.reduce(
+                (result, el) =>
+                result.some((item) =>
+                    (typeof el === "object" && typeof item === "object") ||
+                    (typeof el === "function" && typeof item === "function")
+                    ? JSON.stringify(el) === JSON.stringify(item)
+                    : el === item
+                )
+                    ? result
+                    : [...result, el],
+                []
+            );
+*/

@@ -1,12 +1,32 @@
-//написать функцию котороя перемешивает элементы массива случайным образом
+/*
+    название: пермешать массивов
+    
+    описание: 
+        написать функцию которая приннимает массив
+        возвращает массив где элемеенты расположенны в лучайном порядке
 
-const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    теги: [функции, массив]
+    
+    сложность: 5 мин
+    
+    уровень автора: 2
 
-const getRandomArray = (arr) => {
-  const newArr = [];
-  for (let index = array.length - 1; index >= 0; index--) {
-      const randomIndex =  Math.floor(Math.random()*(index+1))
-  }
-};
+    тесты:
+        const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        
+    
+    решение:
+        const getRandomArray = (arr) => {
+          const newArr = [...arr];
+          for (let index = newArr.length - 1; index >= 0; index--) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            const current = newArr[index];
+            newArr[index] = newArr[randomIndex];
+            newArr[randomIndex] = current;
+          }
+          return newArr;
+        };
 
-console.log(getRandomArray(arr));
+        const getRandomArray = (arr) => arr.sort(() => Math.random() - 0.5);
+
+*/
