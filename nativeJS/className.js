@@ -32,12 +32,10 @@
 
     решение:
       const fn = (arr) => {
-        const obj = arr.reduce((s, el) => {
-          s[el] = (s[el] || 1) + 1;
-          return s;
-        }, {});
+        const obj = arr.reduce((a, el) => ({ ...a, [el]: (a[el] || 1) + 1 }), {});
         return Object.entries(obj)
-        .sort((a, b) => b[1] - a[1])
-        .map((el) => el[0]);
+          .sort((a, b) => b[1] - a[1])
+          .map((el) => el[0]);
       };
 */
+ 
