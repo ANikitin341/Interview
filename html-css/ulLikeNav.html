@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UL tag with anchors like navigation</title>
+  <!--
+    В этом задании необходимо реализовать кнопки навигации при помощи тегов <ul> и <a>,
+    список должен быть расположен в линию, ссылки должны выглядеть как кнопки
+  -->
+  <style>
+    .list {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .list-item {
+      width: 100px;
+      margin: 0 10px;
+      padding: 5px;
+      background-color: black;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .list-item:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .list-item-link {
+      color: white;
+      text-decoration: unset;
+    }
+  </style>
+</head>
+<body>
+  <ul class="list">
+    <li class="list-item">
+      <a class="list-item-link" href="#">LinkOne</a>
+    </li>
+
+    <li class="list-item">
+      <a class="list-item-link" href="#">LinkTwo</a>
+    </li>
+
+    <li class="list-item">
+      <a class="list-item-link" href="#">LinkThree</a>
+    </li>
+  </ul>
+</body>
+</html>
