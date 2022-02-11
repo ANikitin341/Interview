@@ -26,27 +26,56 @@
       };
     
     решение:
-     const queryObjeectify = (str = "") => {
-      let res = {};
-      str.split("&").forEach((el) => {
-        const [keyStr, value] = el.split("=");
+      //1
+      const queryObjeectify = (str = "") => {
+          let res = {};
+          str.split("&").forEach((el) => {
+            const [keyStr, value] = el.split("=");
 
-        keyStr.split(".").reduce((cur, key, i, arr) => {
-          if (i === arr.length - 1) {
-            return (cur[key] = decodeURIComponent(value));
+            keyStr.split(".").reduce((cur, key, i, arr) => {
+              if (i === arr.length - 1) {
+                return (cur[key] = decodeURIComponent(value));
+              }
+              if (!cur[key]) {
+                cur[key] = {};
+              }
+              cur = cur[key];
+              return cur;
+            }, res);
+          });
+          return res;
+        };
+
+      //2
+        const getObject = (object, array) => {
+          if (array.length === 2) {
+            return { ...object, [array[0]]: array[1].replace("%20", " ") };
           }
-          if (cur[key]) {
-            cur = cur[key];
-          } else {
-            cur[key] = {};
-            cur = cur[key];
-          }
-          return cur;
-        }, res);
-      });
-      console.log("---res", res);
-      return res;
-    };
+
+          const removed = array.splice(0, 1);
+          return { ...object, [removed]: getObject(object[removed] ?? {}, array) };
+        };
+
+        const func = (str) => {
+          const asplittingByLogickAnd = str.split("&");
+
+          return asplittingByLogickAnd.reduce((acc, item, index) => {
+            const asplittingByPoint = item.split(".");
+            const lastValuePoint = asplittingByPoint.splice(
+              asplittingByPoint.length - 1,
+              1
+            );
+            const lastValueArrayPoint = lastValuePoint[0].split("=");
+            const currentDataValue = [
+              ...asplittingByPoint,
+              lastValueArrayPoint[0],
+              lastValueArrayPoint[1],
+            ];
+
+            const result = getObject(acc, currentDataValue);
+            return result;
+          }, {});
+        };
 
     объяснение:
       let a = {}; //1
@@ -74,3 +103,5 @@
       console.log("6---a", a);
       console.log("6---b", b);
 */
+
+
